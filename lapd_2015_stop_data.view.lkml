@@ -32,9 +32,10 @@ view: lapd_2015_stop_data {
     sql: ${TABLE}.descent_desc ;;
   }
 
-  dimension:stop_dt {
-    label: "Stop Date"
-    type: date
+  dimension_group: stop_dt {
+    label: "Stop"
+    type: time
+    timeframes: [date, month]
     sql: ${TABLE}.stop_dt ;;
   }
 
@@ -69,9 +70,9 @@ view: lapd_2015_stop_data {
   }
 
   dimension:  post_stop_actv_ind {
-    label: "After Action Required(Y/N)"
-    type: string
-    sql: ${TABLE}.post_stop_actv_ind ;;
+    label: "After Action Required"
+    type: yesno
+    sql: ${TABLE}.post_stop_actv_ind = 'Y' ;;
   }
 
   dimension: stop_tm {
@@ -101,4 +102,5 @@ view: lapd_2015_stop_data {
   measure: count {
     type: count
   }
+
 }
