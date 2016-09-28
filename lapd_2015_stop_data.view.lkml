@@ -43,6 +43,7 @@ view: lapd_2015_stop_data {
     label: "Officer 1 Serial Number"
     type: number
     sql: ${TABLE}.ofcr1_serl_nbr ;;
+    drill_fields: [officer_stats*]
   }
 
   dimension:  ofcr1_div_nbr {
@@ -61,6 +62,7 @@ view: lapd_2015_stop_data {
     label: "District Number"
     type: number
     sql: ${TABLE}.rpt_dist_nbr ;;
+    drill_fields: [viz_detail*]
   }
 
   dimension: stop_type {
@@ -101,6 +103,17 @@ view: lapd_2015_stop_data {
 
   measure: count {
     type: count
+  }
+
+  # Sets
+
+
+  set: viz_detail {
+    fields: [descent_desc, count]
+  }
+
+  set: officer_stats {
+    fields: [descent_desc, count]
   }
 
 }
