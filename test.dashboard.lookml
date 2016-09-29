@@ -17,8 +17,8 @@
     measures: [lapd_2015_stop_data.count]
     dynamic_fields:
       - table_calculation: calculation_1
-    label: Calculation 1
-    expression: "pivot_index(${lapd_2015_stop_data.count},1)*2 - sum(pivot_offset_list(${lapd_2015_stop_data.count}, 1 - pivot_column(), pivot_column()))"
+        label: Calculation 1
+        expression: "pivot_index(${lapd_2015_stop_data.count},1)*2 - sum(pivot_offset_list(${lapd_2015_stop_data.count}, 1 - pivot_column(), pivot_column()))"
     filters:
       lapd_2015_stop_data.persn_gender_cd: M
     sorts: [lapd_2015_stop_data.count desc, lapd_2015_stop_data.descent_desc]

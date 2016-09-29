@@ -105,6 +105,13 @@ view: lapd_2015_stop_data {
     type: count
   }
 
+  measure: test_measure {
+    type: number
+    drill_fields: [officer_stats*]
+    sql: ${TABLE}.form_ref_nbr ;;
+    html: <a href="{{link}}"> {{value}} </a>;;
+  }
+
   # Sets
 
 
