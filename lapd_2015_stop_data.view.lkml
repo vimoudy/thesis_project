@@ -66,9 +66,17 @@ view: lapd_2015_stop_data {
   }
 
   dimension: stop_type {
-    label: "Stop Type"
     type: string
-    sql: ${TABLE}.stop_type ;;
+    case: {
+        when: {
+          sql: ${TABLE}.stop_type = 'PED';;
+          label: "Pedestrian"
+        }
+        when: {
+          sql: ${TABLE}.stop_type = 'VEH' ;;
+          label: "Vehicle"
+        }
+      }
   }
 
   dimension:  post_stop_actv_ind {
