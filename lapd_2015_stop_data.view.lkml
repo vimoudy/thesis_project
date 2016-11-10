@@ -28,8 +28,29 @@ view: lapd_2015_stop_data {
 
   dimension: descent_desc {
     label: "Ethnicity"
-    type: string
-    sql: ${TABLE}.descent_desc ;;
+    case: {
+      when: {
+        sql: ${TABLE}.descent_desc = 'AMERICAN INDIAN' ;;
+        label: "American Indian"
+      }
+      when: {
+        sql: ${TABLE}.descent_desc = 'ASIAN' ;;
+        label: "Asian American"
+      }
+      when: {
+        sql: ${TABLE}.descent_desc = 'BLACK' ;;
+        label: "African American"
+      }
+      when: {
+        sql: ${TABLE}.descent_desc = 'HISPANIC';;
+        label: "Latino American"
+      }
+      when: {
+        sql: ${TABLE}.descent_desc = 'WHITE' ;;
+        label: "White"
+      }
+      else: "Other"
+    }
   }
 
   dimension_group: stop_dt {
@@ -113,8 +134,21 @@ view: lapd_2015_stop_data {
     type: count
   }
 
-  # Sets
+  measure: count_distinct {
+    type: count_distinct
+    sql: ${stop_nbr} ;;
+#     filters: {
+#       field: post_stop_actv_ind
+#       value: "yes"
+#     }
+  }
 
+  measure: percent_of_previous {
+    type: percent_of_previous
+    sql: ${count} ;;
+  }
+
+  # Sets
 
   set: viz_detail {
     fields: [descent_desc, count]
