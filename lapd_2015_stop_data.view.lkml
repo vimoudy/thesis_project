@@ -8,6 +8,7 @@ view: lapd_2015_stop_data {
     primary_key: yes
   }
 
+
   dimension: form_ref_nbr {
     label: "Form Reference Number"
     type: number
