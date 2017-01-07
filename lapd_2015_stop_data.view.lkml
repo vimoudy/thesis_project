@@ -57,7 +57,7 @@ view: lapd_2015_stop_data {
   dimension_group: stop_dt {
     label: "Stop"
     type: time
-    timeframes: [date, month]
+    timeframes: [date, month, week]
     sql: ${TABLE}.stop_dt ;;
   }
 
