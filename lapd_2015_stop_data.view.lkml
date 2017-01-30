@@ -8,6 +8,17 @@ view: lapd_2015_stop_data {
     primary_key: yes
   }
 
+  measure: test_sum {
+    type: number
+    sql: (SELECT SUM(CASE WHEN ${persn_gender_cd} = 'M' OR ${persn_gender_cd} = 'F' THEN 1 ELSE 0 END)
+         FROM lapd_2015_stop_data) ;;
+  }
+
+  measure:  percent {
+    type: number
+    sql: ${count}::float / ${test_sum}::float ;;
+    value_format_name: percent_2
+  }
 
   dimension: form_ref_nbr {
     label: "Form Reference Number"
@@ -142,6 +153,16 @@ view: lapd_2015_stop_data {
 #       field: post_stop_actv_ind
 #       value: "yes"
 #     }
+  }
+
+  measure: test_html {
+    type: string
+    sql: (SELECT 'This is a test'::text) ;;
+  }
+
+  measure: sum {
+    type: sum
+    sql: CASE WHEN ${persn_gender_cd} = 'M' OR ${persn_gender_cd} = 'F' THEN 1 ELSE 0 END;;
   }
 
   measure: percent_of_previous {
