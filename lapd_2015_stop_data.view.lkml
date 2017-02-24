@@ -155,16 +155,6 @@ view: lapd_2015_stop_data {
 #     }
   }
 
-  measure: test_html {
-    type: string
-    sql: (SELECT 'This is a test'::text) ;;
-  }
-
-  measure: sum {
-    type: sum
-    sql: CASE WHEN ${persn_gender_cd} = 'M' OR ${persn_gender_cd} = 'F' THEN 1 ELSE 0 END;;
-  }
-
   measure: percent_of_previous {
     type: percent_of_previous
     sql: ${count} ;;
