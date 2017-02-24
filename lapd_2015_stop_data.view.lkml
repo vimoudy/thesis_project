@@ -149,10 +149,6 @@ view: lapd_2015_stop_data {
   measure: count_distinct {
     type: count_distinct
     sql: ${stop_nbr} ;;
-#     filters: {
-#       field: post_stop_actv_ind
-#       value: "yes"
-#     }
   }
 
   measure: percent_of_previous {
