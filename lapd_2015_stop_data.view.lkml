@@ -144,6 +144,7 @@ view: lapd_2015_stop_data {
 
   measure: count {
     type: count
+    drill_fields: [officer_stats*, -count]
   }
 
   measure: count_distinct {
